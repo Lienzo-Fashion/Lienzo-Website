@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="BUYNOW.css">
+   <title>Document</title>
+</head>
+<body>
+<div id="main">
+    <div id="header">
+        <div id="logo">
+            <img src="logo_company.png" alt="logo_company.png" height="100px" width="100px"><h1>LIENZO</h1>
+        </div>
+    </div>
+    <div id="page">
+    <div id="form">
+    <h1 style="color: white;">Fill the information</h1>
+        <h3 style="color: white;">Enter Coupon code if have</h3>
+        <input type="text" id="myInput" placeholder="Enter the correct answer...">
+    <button id="checkButton">CODE</button>
+    <p id="result"></p>
+    
+    <form method="get" style="color: white;">
+            <h3>Enter Your Name</h3>
+            <input type="text" name="name_of_person" required placeholder="Full Name">
+            <h3>Enter Your address</h3>
+            <input type="text" name="address_of_person" placeholder="Address Line 1" id="address1" style="display:flex; margin: 10px;" required>
+            <input type="text" name="address_of_person" placeholder="Address Line 2" id="address2" style="display:flex; margin: 10px;">
+            <input type="text" name="address_of_person" placeholder="Address Line 3" id="address3" style="display:flex; margin: 10px;">
+            <h3 required>choose office/home</h3>
+            <input type="checkbox" class="checkbox">Office
+            <input type="checkbox" class="checkbox"> Home
+            <h3>Mobile Number</h3>
+            <input type="tel" maxlength="10" minlength="10" required placeholder="Mobile Number">
+            <input type="submit" name="CHECKOUT" value="CHECKOUT" id="checkout">    
+    </form>
+    </div>
+    <div id="checkout_price">
+        <h1>Order Summary: </h1>
+        <div>
+            <div style="display: flex; gap: 10px; margin: 10px;">
+                <h4>items :</h4><h4 id = "price">₹799</h4>
+            </div>
+            <div style="display: flex; gap: 10px; margin: 10px;">
+                <h4>Qty :</h4><input type="number" name="quaintity" min="0" value="1" id="quaintity" style=" height: 20px; width: 40px; padding-left: 5px;">
+            </div>
+            <div style="display: flex; gap: 10px; margin: 10px;">
+                <h4>Coupon :</h4><h4 id="coupon_name">no coupon</h4>
+            </div>
+            <div style="display: flex; gap: 10px; margin: 10px;">
+                <h4>Discount :</h4><h4 id="Discount">no coupon used</h4>
+            </div>
+            <span>-------------------------------</span>
+            <div style="display: flex; gap: 10px; margin: 10px;">
+                <h4>Total:</h4><h4 id="discounted_price">₹799</h4>
+            </div>
+        </div>
+    </div>
+</div>
+</div>  
+<script>
+    // Define the correct answer
+    const correctAnswer = "NEW20"; // Example correct answer
+
+    // Add an event listener to the button
+    document.getElementById("checkButton").onclick = function() {
+        // Get the input element
+        const inputElement = document.getElementById("myInput");
+        // Get the value of the input
+        const inputValue = inputElement.value;
+
+        // Get the result paragraph element
+        const resultElement = document.getElementById("result");
+
+        // Check if the input value matches the correct answer
+        const coupon_name = document.getElementById("coupon_name");
+        const Discount = document.getElementById("Discount");
+        const items = document.getElementById("price");
+        const price = document.getElementById("price").innerHTML;
+        const final = document.getElementById("discounted_price");
+        const quaintity = document.getElementById("quaintity");
+        const qty = quaintity.value;
+        if (inputValue == correctAnswer) {
+            resultElement.textContent = "VERIFIED! 🎉";
+            resultElement.style.color = "green"; // Optional: change text color
+            coupon_name.textContent = "NEW20";
+            const y = price.replace('₹', '').trim();
+            x = (0.2*y*qty);
+            final_price = y- (0.2*y);
+            console.log(price);
+            Discount.textContent = "₹"+ x;
+            items.textContent = "₹" + y*qty 
+            final.textContent = "₹"+final_price*qty;
+
+        } else {
+            resultElement.textContent = "NOT AVAILABLE. Try again!";
+            resultElement.style.color = "red"; // Optional: change text color
+        }
+    };
+        items.textContent = "₹" + y*qty 
+</script>
+<script src="BUYNOW.js"></script> 
+</body>
+</html>
